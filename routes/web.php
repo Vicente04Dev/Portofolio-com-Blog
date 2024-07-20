@@ -14,7 +14,7 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('admin/profile/updatePassword', 'UpdatePassword')->name('updatePassword');
 });
 Route::get('/', function () {
-    return view('welcome');
+    return view('site.pages.index');
 });
 
 Route::get('/dashboard', function () {
