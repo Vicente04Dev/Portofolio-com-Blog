@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\about;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -102,10 +103,31 @@ class AdminController extends Controller
     }
 
     public function ProfileDescription(){
-        return view('site.pages.about.description');
+
+        $data = about::get()->first();
+        return view('site.pages.about.description', compact('data'));
     }
     public function ProfileDescriptionStore(Request $request){
         
-        dd($request);
+        $datas = $request->validate([
+            'title' => 'required',
+            'experience' => 'required',
+            'short_description' => 'required',
+            'description' => 'required'
+        ], [
+            'title.required' => 'O título é obrigatório.',
+            'experience.required' => 'A experiência é obrigatória!',
+            'short_description.required' => 'Digite uma breve descrição sobre você.',
+            'description.required' => 'Fale sobre você um pouco mais (incluido experiências, projectos desenvolvidos, etc.)',
+        ]);
+
+        about::create([
+            'title' => $datas['title'],
+            'experience' => $datas['experience'],
+            'short_description' => $datas['short_description'],
+            'description' => $datas['description'],
+        ]);
+
+        return redirect()->back()->with(['message' => 'Suas informações foram actualizadas com sucesso', 'alert-type' => 'success']);
     }
 }
