@@ -100,4 +100,12 @@ class AdminController extends Controller
 
         }
     }
+
+    public function ProfileDescription(){
+        return view('site.pages.about.description');
+    }
+    public function ProfileDescriptionStore(Request $request){
+        
+        dd($request);
+    }
 }

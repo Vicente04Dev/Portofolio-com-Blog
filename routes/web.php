@@ -12,6 +12,9 @@ Route::controller(AdminController::class)->group(function(){
 
     Route::get('admin/profile/alterarSenha', 'ChangePassword')->name('admin.alterarSenha');
     Route::post('admin/profile/updatePassword', 'UpdatePassword')->name('updatePassword');
+
+    Route::get('admin/profile/description', 'ProfileDescription')->name('admin.profile.description');
+    Route::post('admin/profile/description', 'ProfileDescriptionStore')->name('store.profile.about');
 });
 Route::get('/', function () {
     return view('site.pages.index');
