@@ -28,25 +28,40 @@
                         <span>Testemunhos</span>
                     </a>
                 </li>
+
                 <li>
-                    <a href="{{route('services')}}" class="waves-effect">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-medal-line"></i>
                         <span>Serviços</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('add.service')}}">Adicionar</a></li>
+                        <li><a href="{{route('services')}}">Ver serviços</a></li>
+                    </ul>
                 </li>
 
                 <li>
-                    <a href="{{route('portfolio')}}" class="waves-effect">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-suitcase-fill"></i>
                         <span>Portfolios</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('add.portfolio')}}">Adicionar</a></li>
+                        <li><a href="{{route('portfolio')}}">Ver portfolios</a></li>
+                    </ul>
                 </li>
+
                 <li>
-                    <a href="{{route('posts')}}" class="waves-effect">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-newspaper-line"></i>
                         <span>Artigos do blog</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('add.post')}}">Adicionar</a></li>
+                        <li><a href="{{route('posts')}}">Ver posts</a></li>
+                    </ul>
                 </li>
+
                 <li>
                     <a href="{{route('contacts')}}" class="waves-effect">
                         <i class="ri-file-info-fill"></i>

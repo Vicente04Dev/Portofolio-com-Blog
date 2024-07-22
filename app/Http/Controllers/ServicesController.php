@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\services;
 use Illuminate\Http\Request;
 
 class ServicesController extends Controller
@@ -19,7 +20,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.add.service');
     }
 
     /**
@@ -27,7 +28,33 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'short_description' => 'required',
+            'description' => 'required'
+        ], [
+            'name.required' => 'O nome do serviço é obrigatório.',
+            'short_description.required' => 'Digite uma breve descrição sobre você.',
+            'description.required' => 'Faça uma descrição em detalhes sobre este serviço',
+        ]);
+
+        if($request->file('icon')){
+
+            $file = $request->file('icon');
+
+            $filename = date('YmdHi').$file->getClientOriginalName();
+
+            $file->move(public_path('upload/services'), $filename);
+        }
+
+        services::create([
+            'name' => $data['name'],
+            'short_description' => $data['short_description'],
+            'description' => $data['description'],
+            'icon' => $filename,
+        ]);
+
+        return redirect()->back()->with(['message' => 'Serviço cadastrado com sucesso', 'alert-type' => 'success']);
     }
 
     /**

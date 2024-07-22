@@ -18,18 +18,21 @@
                             <label for="title" class="col-sm-2 col-form-label">Título</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text" name="title" id="title" value="{{$data->title}}">
+                                <x-input-error :messages="$errors->get('title')" class="mt-2 text-danger" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="experience" class="col-sm-2 col-form-label">Sobre sua experiência</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text" name="experience" id="experience" value="{{$data->experience}}">
+                                <x-input-error :messages="$errors->get('experience')" class="mt-2 text-danger" />
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="short_description" class="col-sm-2 col-form-label">Breve descrição</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" name="short_description" id="" rows="5">{{$data->short_description}}</textarea>
+                                <x-input-error :messages="$errors->get('short_description')" class="mt-2 text-danger" />
                             </div>
                         </div>
 
@@ -39,6 +42,7 @@
                                 <div>
                                     <div>
                                         <textarea id="elm1" name="description">{{$data->description}}</textarea>
+                                        <x-input-error :messages="$errors->get('description')" class="mt-2 text-danger" />
                                     </div>
                                 </div>
                             </div> <!-- end col -->

@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone_number');
             $table->string('email');
+            $table->string('facebook');
+            $table->string('instagram');
+            $table->string('linkedin');
+            $table->string('behance');
 
             $table->timestamps();
         });
