@@ -89,6 +89,13 @@
         <!-- App js -->
         <script src="{{asset('backend/assets/js/app.js')}}"></script>
         <script type="text/javascript" src="{{asset('backend/assets/js/toastr.min.js')}}"></script>
+        
+        <!--tinymce js-->
+        <script src="{{asset('backend/assets/libs/tinymce/tinymce.min.js')}}"></script>
+
+        <!-- init js -->
+        <script src="{{asset('backend/assets/js/pages/form-editor.init.js')}}"></script>
+
 
         <script>
             @if(Session::has('message'))

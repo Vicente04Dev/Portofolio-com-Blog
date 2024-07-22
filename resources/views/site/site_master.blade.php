@@ -60,7 +60,7 @@
 
 
 
-
+ 
 		<!-- JS here -->
         <script src="{{asset('frontend/assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
         <script src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>

@@ -105,11 +105,13 @@ class AdminController extends Controller
     public function ProfileDescription(){
 
         $data = about::get()->first();
-        return view('site.pages.about.description', compact('data'));
+        return view('admin.about_description', compact('data'));
     }
     public function ProfileDescriptionStore(Request $request){
         
-        $datas = $request->validate([
+        $datas = about::get('id')->first();
+
+        $request->validate([
             'title' => 'required',
             'experience' => 'required',
             'short_description' => 'required',
@@ -121,13 +123,13 @@ class AdminController extends Controller
             'description.required' => 'Fale sobre você um pouco mais (incluido experiências, projectos desenvolvidos, etc.)',
         ]);
 
-        about::create([
-            'title' => $datas['title'],
-            'experience' => $datas['experience'],
-            'short_description' => $datas['short_description'],
-            'description' => $datas['description'],
-        ]);
+        $datas->title = $request->title;
+        $datas->experience = $request->experience;
+        $datas->short_description = $request->short_description;
+        $datas->description = $request->description;
 
-        return redirect()->back()->with(['message' => 'Suas informações foram actualizadas com sucesso', 'alert-type' => 'success']);
+        $datas->save();
+
+        return redirect()->back()->with(['message' => 'Informações actualizadas com sucesso', 'alert-type' => 'success']);
     }
 }

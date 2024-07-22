@@ -15,51 +15,41 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-    
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-mail-send-line"></i>
+                    <a href="{{route('admin.profile.description')}}" class="waves-effect">
+                        <i class="ri-file-user-line"></i>
                         <span>Sobre Mim</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('admin.profile.description')}}">Descrição</a></li>
-                        <li><a href="email-read.html">Habilidades</a></li>
-                    </ul>
                 </li>
 
                 <li>
-                    <a href="{{route('dashboard')}}" class="waves-effect">
+                    <a href="{{route('testimonials')}}" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
                         <span>Testemunhos</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-mail-send-line"></i>
+                    <a href="{{route('services')}}" class="waves-effect">
+                        <i class="ri-medal-line"></i>
                         <span>Serviços</span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Descrição</a></li>
-                        <li><a href="email-read.html">Serviços</a></li>
-                    </ul>
                 </li>
 
                 <li>
-                    <a href="{{route('dashboard')}}" class="waves-effect">
-                        <i class="ri-dashboard-line"></i>
+                    <a href="{{route('portfolio')}}" class="waves-effect">
+                        <i class="ri-suitcase-fill"></i>
                         <span>Portfolios</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('dashboard')}}" class="waves-effect">
-                        <i class="ri-dashboard-line"></i>
-                        <span>Blogs</span>
+                    <a href="{{route('posts')}}" class="waves-effect">
+                        <i class="ri-newspaper-line"></i>
+                        <span>Artigos do blog</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('dashboard')}}" class="waves-effect">
-                        <i class="ri-dashboard-line"></i>
+                    <a href="{{route('contacts')}}" class="waves-effect">
+                        <i class="ri-file-info-fill"></i>
                         <span>Informações de contacto</span>
                     </a>
                 </li>

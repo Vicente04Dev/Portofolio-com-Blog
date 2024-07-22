@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\InfoController;
+use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\Testimonials;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(AdminController::class)->group(function(){
@@ -19,6 +24,13 @@ Route::controller(AdminController::class)->group(function(){
 Route::get('/', function () {
     return view('site.pages.index');
 });
+
+Route::get('admin/testemunhos', [Testimonials::class, 'index'])->name('testimonials');
+Route::get('admin/serviços', [ServicesController::class, 'index'])->name('services');
+Route::get('admin/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
+Route::get('admin/posts', [PostsController::class, 'index'])->name('posts');
+Route::get('admin/contactos', [InfoController::class, 'index'])->name('contacts');
+
 
 Route::get('/dashboard', function () {
     return view('admin.index');
