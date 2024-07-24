@@ -27,7 +27,7 @@
                                 <select name="category_id" id="categoria" class="form-select">
                                     <option disabled selected>Selecione uma categoria</option>
                                     @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        <option value="{{$category->id}}" {{old('category_id') == $category->id ?'selected' : ''}}>{{$category->name}}</option>
                                     @endforeach
                                 </select>
                                 <x-input-error :messages="$errors->get('category_id')" class="mt-2 text-danger" />
@@ -49,7 +49,7 @@
                         <div class="row mb-3">
                             <label for="short_description" class="col-sm-2 col-form-label">Breve descrição do post</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="short_description" id="short_description" rows="5" required>{{old('short_description')}}</textarea>
+                                <textarea class="form-control" name="short_description" id="short_description" rows="5">{{old('short_description')}}</textarea>
                                 <x-input-error :messages="$errors->get('short_description')" class="mt-2 text-danger" />
                             </div>
                         </div>

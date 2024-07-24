@@ -6,26 +6,32 @@
 
             <h2 class="fs-4 mb-4">Testemunhos</h2>
             <div class="row">
+                @foreach ($datas as $item)
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-body">
                             <blockquote class="card-blockquote font-size-14 mb-0">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                <p>{{$item->description}}</p>
                                 <footer class="blockquote-footer font-size-12 m-0">
-                                    Wilson Vicente
+                                    {{$item->name}}
                                 </footer>
                             </blockquote>
 
-                            <p class="fw-bold mt-3">Status: <span class="fs-6 badge text-white bg-warning fw-medium">Pendente</span></p>
+                            @php
+                                $bg = ($item->situation_id == 1 ? 'bg-warning' : 'bg-success');
+                                $texto = ($item->situation_id == 2 ? 'Publicado' : 'Pendente');
+                            @endphp
+                            <p class="fw-bold mt-3">Status: <span class="fs-6 badge text-white {{$bg}} fw-medium">{{$texto}}</span></p>
                         </div>
                         <div class="card-footer">
-                            <a href="">Editar</a>
+                            <a href="#edit-{{$item->id}}" data-bs-toggle="modal">Editar</a>
+                            @include('admin.edit.testimonials')
                             <a href="" class="text-danger">Remover</a>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-        </div>
-        
+        </div>   
     </div>
 @endsection

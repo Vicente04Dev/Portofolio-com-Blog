@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\situation;
 use Illuminate\Http\Request;
+use App\Models\testimonials;
 
-class Testimonials extends Controller
+class TestimonialsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.testimonials');
+        $datas = testimonials::all();
+        $situations = situation::all();
+        return view('admin.testimonials', compact(['datas', 'situations']));
     }
 
     /**
@@ -41,9 +45,15 @@ class Testimonials extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, int $id)
     {
-        //
+        $data = testimonials::find($id);
+
+        $data->situation_id = $request['situation_id'];
+
+        $data->save();
+
+        return redirect()->back()->with(['message' => 'Testemunho foi actualizado com sucesso', 'alert-type' => 'success']);
     }
 
     /**

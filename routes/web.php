@@ -6,7 +6,7 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServicesController;
-use App\Http\Controllers\Testimonials;
+use App\Http\Controllers\TestimonialsController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,7 +34,10 @@ Route::middleware('auth')->group(function () {
         Route::post('admin/profile/description', 'ProfileDescriptionStore')->name('store.profile.about');
     });
 
-    Route::get('admin/testemunhos', [Testimonials::class, 'index'])->name('testimonials');
+    Route::get('admin/testemunhos', [TestimonialsController::class, 'index'])->name('testimonials');
+    Route::post('admin/testemunho/editar/{id}', [TestimonialsController::class, 'edit'])->name('testimonial.edit');
+
+
     Route::get('admin/contactos', [InfoController::class, 'index'])->name('contacts');
     Route::post('admin/contactos/add', [InfoController::class, 'store'])->name('store.contacts');
     
@@ -49,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/posts', [PostsController::class, 'index'])->name('posts');
     Route::get('admin/posts/add',[PostsController::class, 'create'])->name('add.post');
     Route::post('admin/post/add',[PostsController::class, 'store'])->name('store.post');
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
