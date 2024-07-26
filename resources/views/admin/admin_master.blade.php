@@ -27,6 +27,7 @@
         <!-- App Css-->
         <link href="{{asset('backend/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/css/toastr.min.css')}}" >
+        <link rel="stylesheet" href="{{asset('backend/assets/js/sweetalert2.min.css')}}">
 
     </head>
 
@@ -95,6 +96,7 @@
 
         <!-- init js -->
         <script src="{{asset('backend/assets/js/pages/form-editor.init.js')}}"></script>
+        <script src="{{asset('backend/assets/js/sweetalert2.min.js')}}"></script>
 
 
         <script>

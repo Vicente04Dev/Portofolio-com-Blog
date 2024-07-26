@@ -67,8 +67,12 @@ class TestimonialsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $data = testimonials::find($id);
+
+        $data->delete();
+
+        return redirect()->back()->with(['message' => 'Testemunho removido com sucesso', 'alert-type' => 'success']);
     }
 }

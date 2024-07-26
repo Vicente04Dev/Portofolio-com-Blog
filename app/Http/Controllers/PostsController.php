@@ -36,6 +36,7 @@ class PostsController extends Controller
             'description' => 'required',
             'category_id' => 'required',
             'user_id' => 'required',
+            'situation_id' => 'required',
         ], [
             'title.required' => 'Dê um título ao post.',
             'short_description.required' => 'Faça uma pequena descrição sobre o post.',
@@ -58,6 +59,7 @@ class PostsController extends Controller
             'image' => $filename,
             'category_id' => $datas['category_id'],
             'user_id' => $datas['user_id'],
+            'situation_id' => $datas['situation_id'],
         ]);
 
         return redirect(route('posts'))->with(['message' => 'Post publicado com sucesso', 'alert-type' => 'success']);

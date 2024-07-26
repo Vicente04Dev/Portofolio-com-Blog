@@ -46,6 +46,7 @@
                                 <img class="img-fluid img-thumbnail mt-2" src="{{ url('upload/no_image.jpg')}}" height="auto" alt="Card image cap" id="showImage">
                             </div>
                         </div>
+                            <input type="hidden" class="form-control" name="situation_id" id="situation_id" value="2">
                         <div class="row mb-3">
                             <label for="short_description" class="col-sm-2 col-form-label">Breve descrição do post</label>
                             <div class="col-sm-10">

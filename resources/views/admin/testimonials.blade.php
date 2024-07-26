@@ -26,7 +26,7 @@
                         <div class="card-footer">
                             <a href="#edit-{{$item->id}}" data-bs-toggle="modal">Editar</a>
                             @include('admin.edit.testimonials')
-                            <a href="" class="text-danger">Remover</a>
+                            <a class="text-danger" href="{{route('testimonials.delete', $item->id)}}">Remover</a>
                         </div>
                     </div>
                 </div>
@@ -34,4 +34,28 @@
             </div>
         </div>   
     </div>
+
+    <script>
+        function removeTestimonial(id){
+            Swal.fire({
+                title: "Tem certaza?",
+                text: "Esta ação não pode ser desfeita! Uma vez apagado, não poderá recuperar este conteúdo nunca.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                cancelButtonText: "Cancelar",
+                confirmButtonText: "Sim, apagar"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    location.href = "admin/testemunho/remover/"+id;
+                    Swal.fire({
+                    title: "Apagado!",
+                    text: "O testemunho foi removido com sucesso.",
+                    icon: "success"
+                    });
+                }
+            });
+        }
+    </script>
 @endsection

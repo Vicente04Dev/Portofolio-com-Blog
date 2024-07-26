@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('admin/testemunhos', [TestimonialsController::class, 'index'])->name('testimonials');
     Route::post('admin/testemunho/editar/{id}', [TestimonialsController::class, 'edit'])->name('testimonial.edit');
+    Route::get('admin/testemunho/remover/{id}', [TestimonialsController::class, 'destroy'])->name('testimonials.delete');
 
 
     Route::get('admin/contactos', [InfoController::class, 'index'])->name('contacts');
@@ -43,6 +44,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('admin/serviços', [ServicesController::class, 'index'])->name('services');
     Route::get('admin/serviços/add',[ServicesController::class, 'create'])->name('add.service');
+    Route::get('admin/serviços/remove/{id}',[ServicesController::class, 'destroy'])->name('service.remove');
     Route::post('admin/serviços/add',[ServicesController::class, 'store'])->name('store.service');
     
     Route::get('admin/portfolio', [PortfolioController::class, 'index'])->name('portfolio');

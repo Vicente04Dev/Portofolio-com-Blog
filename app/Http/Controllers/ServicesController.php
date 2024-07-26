@@ -12,7 +12,8 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return view('admin.services');
+        $datas = services::all();
+        return view('admin.services', compact('datas'));
     }
 
     /**
@@ -84,8 +85,12 @@ class ServicesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $data = services::find($id);
+
+        $data->delete();
+        unlink(public_path("upload/services/$data->icon"));
+        return redirect()->back()->with(['message' => 'Serviço removido com sucesso', 'alert-type' => 'success' ]);
     }
 }

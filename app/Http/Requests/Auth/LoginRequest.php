@@ -32,6 +32,16 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages(){
+        return [
+            'email.required' => 'Digite seu email.',
+            'email.string' => 'Seu email deve conter apenas textos, números 2 @.',
+            'email.email' => 'Digite um email válido.',
+            'password.required' => 'Digite sua senha.',
+            'password.string' => 'Sua senha deve conter textos, números e caracteres especiais.',
+        ];
+    }
+
     /**
      * Attempt to authenticate the request's credentials.
      *
