@@ -6,26 +6,28 @@
 
             <h2 class="fs-2 mb-4">Projectos</h2>
             <div class="row">
-                <div class="col-sm-6">
+                @foreach ($datas as $data)
+                    <div class="col-sm-6">
                         <div class="card">
                             <div class="row no-gutters align-items-center">
                                 <div class="col-md-4">
-                                    <img class="card-img img-fluid" src="assets/images/small/img-2.jpg" alt="Card image">
+                                    <img class="card-img img-fluid" src='{{asset("upload/portfolio/$data->image")}}' alt="Card image">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <h5 class="card-title">{{$data->name}}</h5>
+                                        <p class="card-text">{{$data->short_description}}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="">Editar</a>
-                                <a href="" class="text-danger">Remover</a>
+                                <a href="#edit-{{$data->id}}" data-bs-toggle="modal">Editar</a>
+                                @include('admin.edit.portfolio')
+                                <a href="{{route('delete.portfolio', $data->id)}}" class="text-danger">Remover</a>
                             </div>
                         </div>
-                </div>
+                    </div>
+                @endforeach
             </div>
         </div>
         

@@ -19,7 +19,8 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="">Editar</a>
+                                <a href="#edit-{{$data->id}}" data-bs-toggle="modal">Editar</a>
+                                @include('admin.edit.service')
                                 <a href="{{route('service.remove', $data->id)}}" class="text-danger">Remover</a>
                             </div>
                         </div>
@@ -29,5 +30,17 @@
         </div>
         
     </div>
+    <script>
 
+        $(document).ready(function() {
+            $('#icon').change(function(e){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#showIcon').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    
+    </script>
 @endsection

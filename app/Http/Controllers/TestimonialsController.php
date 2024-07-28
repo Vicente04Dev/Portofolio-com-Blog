@@ -47,21 +47,21 @@ class TestimonialsController extends Controller
      */
     public function edit(Request $request, int $id)
     {
-        $data = testimonials::find($id);
-
-        $data->situation_id = $request['situation_id'];
-
-        $data->save();
-
-        return redirect()->back()->with(['message' => 'Testemunho foi actualizado com sucesso', 'alert-type' => 'success']);
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $data = testimonials::find($id);
+
+        $data->situation_id = $request['situation_id'];
+
+        $data->update();
+
+        return redirect()->back()->with(['message' => 'Testemunho foi actualizado com sucesso', 'alert-type' => 'success']);
     }
 
     /**

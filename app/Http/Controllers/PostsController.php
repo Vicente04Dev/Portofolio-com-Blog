@@ -13,7 +13,11 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('admin.posts');
+        $userId = auth()->user()->id;
+
+        $datas = posts::where('user_id', $userId)->get();
+        $categories = category::all();
+        return view('admin.posts', compact('datas', 'categories'));
     }
 
     /**
@@ -76,24 +80,40 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
-        //
+        $data = posts::find($id);
+
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $data = posts::find($id);
+
+        $data['title'] = $request['title'];
+        $data['description'] = $request['description'];
+        $data['short_description'] = $request['short_description'];
+        $data['category_id'] = $request['category_id'];
+
+        $data->update();
+
+        return redirect()->back()->with(['message' => 'Post actualizado com sucesso', 'alert-type' => 'success']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $data = posts::find($id);
+
+        unlink(public_path("upload/posts/$data->image"));
+        $data->delete();
+
+        return redirect()->back()->with(['message' => 'Post removido com sucesso', 'alert-type' => 'success']);
     }
 }

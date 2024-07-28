@@ -69,17 +69,25 @@ class ServicesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, int $id)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $data = services::find($id);
+
+        $data['name'] = $request['name'];
+        $data['short_description'] = $request['short_description'];
+        $data['description'] = $request['description'];
+
+        $data->update();
+
+        return redirect()->back()->with(['message' => 'Serviço alterado com sucesso', 'alert-type' => 'success']);
     }
 
     /**
