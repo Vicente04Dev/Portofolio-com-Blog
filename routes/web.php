@@ -6,14 +6,22 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TestimonialsController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('site.pages.index');
-});
 
+Route::middleware('guest')->group(function(){
+
+    Route::controller(SiteController::class)->group(function(){
+        Route::get('/', 'index')->name('site.index');
+        Route::get('/sobre', 'sobre')->name('site.sobre');
+        Route::get('/portfolio', 'portfolio')->name('site.portfolio');
+        Route::get('/blog', 'blog')->name('site.blog');
+        Route::get('/contacto', 'contacto')->name('site.contacto');
+    });
+});
 
 Route::get('/dashboard', function () {
     return view('admin.index');
