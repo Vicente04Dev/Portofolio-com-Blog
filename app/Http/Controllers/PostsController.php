@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\category;
 use App\Models\posts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -60,6 +61,7 @@ class PostsController extends Controller
             'title' => $datas['title'],
             'short_description' => $datas['short_description'],
             'description' => $datas['description'],
+            'slug' => Str::slug($datas['title']),
             'image' => $filename,
             'category_id' => $datas['category_id'],
             'user_id' => $datas['user_id'],
@@ -96,6 +98,7 @@ class PostsController extends Controller
 
         $data['title'] = $request['title'];
         $data['description'] = $request['description'];
+        $data['slug'] = Str::slug($request['title']);
         $data['short_description'] = $request['short_description'];
         $data['category_id'] = $request['category_id'];
 

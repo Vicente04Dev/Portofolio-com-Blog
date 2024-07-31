@@ -62,6 +62,7 @@
                     </ul>
                 </div>
                 <div class="col-lg-6">
+                    @foreach ($about as $info)
                     <div class="about__content">
                         <div class="section__title">
                             <span class="sub-title">01 Sobre mim</span>
@@ -72,13 +73,12 @@
                                 <img src="{{asset('frontend/assets/img/icons/about_icon.png')}}" alt="">
                             </div>
                             <div class="about__exp__content">
-                                @foreach ($about as $info)
                                 <p>{{$info->experience}}</p>
-                                @endforeach
                             </div>
                         </div>
-                        <p class="desc">I love to work in User Experience & User Interface designing. Because I love to solve the design problem and find easy and better solutions to solve it. I always try my best to make good user interface with the best user experience. I have been working as a UX Designer</p>
+                        <p class="desc">{{$info->description}}r</p>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>

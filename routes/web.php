@@ -19,6 +19,7 @@ Route::middleware('guest')->group(function(){
         Route::get('/sobre', 'sobre')->name('site.sobre');
         Route::get('/portfolio', 'portfolio')->name('site.portfolio');
         Route::get('/blog', 'blog')->name('site.blog');
+        Route::get('/blog/{slug}', 'showPost')->name('site.blog.details');
         Route::get('/contacto', 'contacto')->name('site.contacto');
     });
 });

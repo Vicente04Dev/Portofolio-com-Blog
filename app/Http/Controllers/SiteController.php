@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\about;
+use App\Models\contacts;
+use App\Models\portfolio;
 use App\Models\posts;
 use App\Models\services;
 use App\Models\testimonials;
@@ -21,18 +23,31 @@ class SiteController extends Controller
     }
 
     public function sobre(){
-        return view('site.pages.about');
+        $abouts = about::all();
+        $services = services::all();
+        $testimonials = testimonials::all();
+        $posts = posts::all();
+
+        return view('site.pages.about',  compact(['abouts', 'services', 'testimonials', 'posts']));
     }
 
     public function portfolio(){
-        return view('site.pages.portfolio');
+        $portfolios = portfolio::all();
+        return view('site.pages.portfolio', compact('portfolios'));
     }
 
     public function blog(){
-        return view('site.pages.blog');
+        $posts = posts::all();
+        return view('site.pages.blog', compact('posts'));
     }
 
     public function contacto(){
-        return view('site.pages.contact');
+        $contacts = contacts::all();
+        return view('site.pages.contact', compact('contacts'));
+    }
+
+    public function showPost($slug){
+        $post = posts::where('slug', $slug)->get();
+        return view('site.pages.blogDetails', compact('post'));
     }
 }

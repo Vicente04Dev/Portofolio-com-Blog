@@ -126,7 +126,7 @@ class AdminController extends Controller
         $datas->title = $request->title;
         $datas->experience = $request->experience;
         $datas->short_description = $request->short_description;
-        $datas->description = $request->description;
+        $datas->description = strip_tags($request->description, ['<br>', '<ul>','<ol>', '<li>']);
 
         $datas->save();
 
