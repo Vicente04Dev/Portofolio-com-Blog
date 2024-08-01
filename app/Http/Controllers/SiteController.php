@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\about;
+use App\Models\category;
+use App\Models\comments;
 use App\Models\contacts;
 use App\Models\portfolio;
 use App\Models\posts;
@@ -37,8 +39,10 @@ class SiteController extends Controller
     }
 
     public function blog(){
-        $posts = posts::all();
-        return view('site.pages.blog', compact('posts'));
+        $posts = posts::paginate(2);
+        $categories = category::all();
+        $comments = comments::all();
+        return view('site.pages.blog', compact(['posts', 'categories', 'comments']));
     }
 
     public function contacto(){
