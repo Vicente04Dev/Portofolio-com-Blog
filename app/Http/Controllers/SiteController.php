@@ -51,7 +51,12 @@ class SiteController extends Controller
     }
 
     public function showPost($slug){
-        $post = posts::where('slug', $slug)->get();
-        return view('site.pages.blogDetails', compact('post'));
+        $posts = posts::where('slug', $slug)->get();
+        $postsAll = posts::all();
+        $categories = category::all();
+        $comments = comments::all();
+
+        $commentsPost = comments::where('post_id', $posts[0]->id)->get();
+        return view('site.pages.blogDetails', compact(['posts', 'categories', 'comments', 'postsAll', 'commentsPost'] ));
     }
 }

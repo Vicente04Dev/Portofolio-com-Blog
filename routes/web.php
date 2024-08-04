@@ -11,7 +11,6 @@ use App\Http\Controllers\TestimonialsController;
 use Illuminate\Support\Facades\Route;
 
 
-
 Route::middleware('guest')->group(function(){
 
     Route::controller(SiteController::class)->group(function(){
